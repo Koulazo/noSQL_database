@@ -13,6 +13,10 @@ def unzip_file(unzipped_file_path, output_path):
 
 # file_path = output_path
 def read_file(file_path):
+    '''
+    
+    
+    '''
     interactions = []
     with open(file_path, 'r') as infile:
         reader = csv.DictReader(infile, delimiter='\t')
