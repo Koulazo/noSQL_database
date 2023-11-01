@@ -99,7 +99,7 @@ resp = es.search(
                         "gene_name": "ROS1",
                     }
                 },
-                "filter": {"bool": {"must_not": {"match_phrase": {"director": "roman polanski"}}}},
+                "filter": {"bool": {"must_not": {"match_phrase": {"column name": "data field"}}}},
             },
         },            
 )
