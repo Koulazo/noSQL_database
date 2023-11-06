@@ -1,4 +1,3 @@
-
 from elasticsearch import Elasticsearch
 import pandas as pd
 from elasticsearch.helpers import bulk
@@ -83,6 +82,7 @@ def add_data_to_es(es, file_path):
 
     # Refresh index to make data available for search
     es.indices.refresh(index="medications")
+
 
 
 

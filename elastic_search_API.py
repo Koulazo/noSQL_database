@@ -1,5 +1,3 @@
-#cEFTRG80c0JCRDB3OUkwZkExYXY6c2pvaXJfU0lUSHVSOXZmclFYYVY3QQ==
-
 from elasticsearch import Elasticsearch
 from Data.data_processing import unzip_file, read_file
 import pandas as pd
@@ -45,21 +43,6 @@ def index_data(data_file,client):
         documents.append(df.iloc[i].to_dict())
     client.bulk(operations=documents, pipeline="ent-search-generic-ingestion")
     return documents, client
-
-
-# def index_search(key_word):
-#     """
-#     Searches for documents containing the given keyword in the index.
-
-#     Args:
-#         key_word (str): The keyword to be searched for.
-
-#     Returns:
-#         dict: The search results.
-#     """
-#     client = connect_client()
-#     output = client.search(index="search-medications", q=key_word)
-#     return output
 
 
 def get_interaction_by_id(id,mappings):
@@ -127,9 +110,6 @@ def main():
     data_file = "Data/sample_interaction_data.tsv"
     client = connect_client()
     documents, client = index_data(data_file, client)
-    # key_word = "ROS1"
-    # search_results = index_search(key_word)
-    # print(search_results)
     search_method = input("Enter 1 to search by id field, 2 to search by objects within fields: ")
     if search_method == "1":
         id = input("Enter id: ")
