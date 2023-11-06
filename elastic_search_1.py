@@ -3,11 +3,20 @@ from elasticsearch import Elasticsearch
 import pandas as pd
 from elasticsearch.helpers import bulk
 from Data.data_processing import unzip_file, read_file
+#Client Password:
 #5lCemi6s2uVcDLpQhzqO
 #=93YXiyQq+1d9frPBoII
 #APIKEY:
 #cEFTRG80c0JCRDB3OUkwZkExYXY6c2pvaXJfU0lUSHVSOXZmclFYYVY3QQ==
+from elasticsearch import Elasticsearch
+
 def create_es_client():
+    """
+    Creates an Elasticsearch client object and returns it.
+
+    Returns:
+    es (Elasticsearch): An Elasticsearch client object.
+    """
     es = Elasticsearch("http://localhost:9200")
     es.info().body
     print("Connection Status is",es.ping())
@@ -16,6 +25,16 @@ def create_es_client():
 
 
 def add_data_to_es(es, file_path):
+    """
+    Adds data from a TSV file to an Elasticsearch index.
+
+    Args:
+        es: Elasticsearch client object
+        file_path: str, path to the TSV file containing the data to be added
+
+    Returns:
+        None
+    """
     # Read data from TSV file
     df = pd.read_csv(file_path, sep='\t')
 
