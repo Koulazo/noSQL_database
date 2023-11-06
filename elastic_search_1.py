@@ -67,9 +67,9 @@ def add_data_to_es(es, file_path):
 
 
 def main():
-    unzipped_file_path = 'scripps-research-test/Data/sample_interaction_data.tsv.zip'
-    output_path = 'scripps-research-test/Data/'
-    file_path = 'scripps-research-test/Data/sample_interaction_data.tsv'
+    unzipped_file_path = 'Data/sample_interaction_data.tsv.zip'
+    output_path = 'Data/'
+    file_path = 'Data/sample_interaction_data.tsv'
     unzip_file(unzipped_file_path, output_path)
     read_file(file_path) 
     # print(interactions)
