@@ -5,7 +5,15 @@ from elasticsearch.helpers import bulk
 
 #Navigate to Elasticsearch connect to local host
 es = Elasticsearch("http://localhost:9200")
+# es = Elasticsearch("http://http://127.0.0.1:9200/")
+#export ELASTIC_PASSWORD=''
+# es = Elasticsearch([{'host': 'localhost', 'port': '9200', "scheme": "http"}])
+# es = Elasticsearch([{'host': 'localhost', 'port': '9200'}]), http_auth=('thesplinteredtrainer@gmail.com', '')
+
 es.info().body
+print("Connection Status is",es.ping())
+
+#es.indices.create(index="example_index_1")
 
 #Read data file and place into pandas dataframe
 df = (
@@ -56,6 +64,14 @@ for i, row in df.iterrows():
             
 es.index(index="medications", id=i, document=doc)
 
+# for i in es.get(index="medications", id=i):
+#     print(i)
+# print(es.get(index="medications", id=i))
+# indicies = es.indices.get_alias("*")
+# for i in indicies:
+#     print(i)
+
+
 
 
 
@@ -87,6 +103,13 @@ bulk(es, bulk_data)
 
 es.indices.refresh(index="medications")
 es.cat.count(index="medications", format="json")
+
+
+
+
+
+
+
 
 
 

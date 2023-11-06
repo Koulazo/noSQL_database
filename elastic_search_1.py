@@ -3,8 +3,10 @@ from elasticsearch import Elasticsearch
 import pandas as pd
 from elasticsearch.helpers import bulk
 from Data.data_processing import unzip_file, read_file
-
-
+#5lCemi6s2uVcDLpQhzqO
+#=93YXiyQq+1d9frPBoII
+#APIKEY:
+#cEFTRG80c0JCRDB3OUkwZkExYXY6c2pvaXJfU0lUSHVSOXZmclFYYVY3QQ==
 def create_es_client():
     es = Elasticsearch("http://localhost:9200")
     es.info().body

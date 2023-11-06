@@ -40,5 +40,7 @@ for i in range(len(df)):
 client.bulk(operations=documents, pipeline="ent-search-generic-ingestion")
     #return documents
 
-
-#def index_search():
+key_word = "ROS1"
+#def index_search(key_word):
+client.search(index="search-medications", q=key_word)
+print(client.search(index="search-medications", q=key_word))
